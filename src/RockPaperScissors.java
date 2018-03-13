@@ -1,32 +1,28 @@
 
 public class RockPaperScissors {
 
-	public int play(String player1, String player2) {
-		if(player1 == "Rock"){
-			if(player2 == "Scissors")
-				return 1;
-			if(player2 == "Paper")
-				return 2;
-			if(player2 == "Rock")
-				return 0;
-		}
-		if(player1 == "Paper"){
-			if(player2 == "Rock")
-				return 1;
-			if(player2 == "Scissors")
-				return 2;
-			if(player2 == "Paper")
-				return 0;
-		}
-		if(player1 == "Scissors"){
-			if(player2 == "Paper")
-				return 1;
-			if(player2 == "Rock")
-				return 2;
-			if(player2 == "Scissors")
-				return 0;
-		}
-		return -1;
+	static Player SCISSORS = new Player();
+	static Player PAPER = new Player();
+	static Player ROCK = new Player();
+	
+	static final int PLAYER_TWO_WINS = 2;
+	static final int PLAYER_ONE_WINS = 1;
+	static final int DRAW = 0;
+	static final int INVALID_PLAY = -1;
+	
+	public RockPaperScissors(){
+		SCISSORS = new Player();
+		PAPER = new Player();
+		ROCK = new Player();
+		SCISSORS.setBeats(PAPER);
+		PAPER.setBeats(ROCK);
+		ROCK.setBeats(SCISSORS);
+	}
+
+	public int play(Player player1, Player player2) {
+		if(player1 == null || player2 == null)
+			return INVALID_PLAY;
+		return player1.play(player2);
 	}
 
 }

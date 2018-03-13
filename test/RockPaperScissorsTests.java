@@ -6,51 +6,65 @@ public class RockPaperScissorsTests {
 
 	@Test
 	public void rockBluntsScissors() {
-		assertEquals(1, new RockPaperScissors().play("Rock", "Scissors"));
+		assertEquals(RockPaperScissors.PLAYER_ONE_WINS, 
+				playGame(RockPaperScissors.ROCK, RockPaperScissors.SCISSORS));
 	}
 	
 	@Test
 	public void scissorsBluntedByRock() {
-		assertEquals(2, new RockPaperScissors().play("Scissors", "Rock"));
+		assertEquals(RockPaperScissors.PLAYER_TWO_WINS, 
+				playGame(RockPaperScissors.SCISSORS, RockPaperScissors.ROCK));
 	}
 	
 	@Test
 	public void paperWrapsRock() {
-		assertEquals(1, new RockPaperScissors().play("Paper", "Rock"));
+		assertEquals(RockPaperScissors.PLAYER_ONE_WINS, 
+				playGame(RockPaperScissors.PAPER, RockPaperScissors.ROCK));
 	}
 	
 	@Test
 	public void rockWrappedByPaper() {
-		assertEquals(2, new RockPaperScissors().play("Rock", "Paper"));
+		assertEquals(RockPaperScissors.PLAYER_TWO_WINS, 
+				playGame(RockPaperScissors.ROCK, RockPaperScissors.PAPER));
 	}
 	
 	@Test
 	public void scissorsCutPaper() {
-		assertEquals(1, new RockPaperScissors().play("Scissors", "Paper"));
+		assertEquals(RockPaperScissors.PLAYER_ONE_WINS, 
+				playGame(RockPaperScissors.SCISSORS, RockPaperScissors.PAPER));
 	}
 	
 	@Test
 	public void paperCutByScissors() {
-		assertEquals(2, new RockPaperScissors().play("Paper", "Scissors"));
+		assertEquals(RockPaperScissors.PLAYER_TWO_WINS, 
+				playGame(RockPaperScissors.PAPER, RockPaperScissors.SCISSORS));
 	}
 	
 	@Test
 	public void rockDrawsWithRock() {
-		assertEquals(0, new RockPaperScissors().play("Rock", "Rock"));
+		assertEquals(RockPaperScissors.DRAW, 
+				playGame(RockPaperScissors.ROCK, RockPaperScissors.ROCK));
 	}
 
 	@Test
 	public void scissorsDrawWithScissors() {
-		assertEquals(0, new RockPaperScissors().play("Scissors", "Scissors"));
+		assertEquals(RockPaperScissors.DRAW, 
+				playGame(RockPaperScissors.SCISSORS, RockPaperScissors.SCISSORS));
 	}
 	
 	@Test
 	public void paperDrawsWithPaper() {
-		assertEquals(0, new RockPaperScissors().play("Paper", "Paper"));
+		assertEquals(RockPaperScissors.DRAW, 
+				playGame(RockPaperScissors.PAPER, RockPaperScissors.PAPER));
 	}
 	
 	@Test
 	public void invalidPlaysScoreMinusOne() {
-		assertEquals(-1, new RockPaperScissors().play("", ""));
+		assertEquals(RockPaperScissors.INVALID_PLAY, 
+				playGame(null, null));
+	}
+	
+	private int playGame(Player player1, Player player2) {
+		return new RockPaperScissors().play(player1, player2);
 	}
 }

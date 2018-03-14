@@ -1,9 +1,9 @@
 
 public class RockPaperScissors {
 
-	static Player SCISSORS = new Player();
-	static Player PAPER = new Player();
-	static Player ROCK = new Player();
+	static Player SCISSORS;
+	static Player PAPER;
+	static Player ROCK;
 	
 	static final int PLAYER_TWO_WINS = 2;
 	static final int PLAYER_ONE_WINS = 1;

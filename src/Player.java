@@ -1,5 +1,5 @@
 
-public class Player {
+class Player {
 
 	private Player beats;
 
